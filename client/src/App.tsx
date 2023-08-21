@@ -1,4 +1,3 @@
-import './App.css';
 import SecurityStrategyAuditPage from './pages/SecurityStrategyAuditPage';
 
 function App() {
