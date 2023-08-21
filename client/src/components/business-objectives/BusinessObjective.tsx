@@ -1,5 +1,7 @@
 import { ReactElement } from "react";
 import { Typography, TextField, Grid } from "@mui/material";
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import BusinessObjectiveDTO from "../../models/DTOs/BusinessObjectiveDTO";
 import Colors from "../../core/ColorPalette";
 
@@ -20,11 +22,14 @@ const BusinessObjective = ({
       padding: '2rem',
       paddingTop: '1.5rem',
     }}>
-      <Grid item xs={12} lg={6}>
+      <Grid item xs={12} lg={6} pr={{ xs: '0rem', lg: '2rem' }}>
         <Typography variant="h2" sx={{ pb: '0.5rem' }}>
           {`Objective ${key}`}
         </Typography>
-        <TextField fullWidth />
+        <TextField
+          fullWidth
+          value={content.title}
+        />
 
         <div style={{
           paddingTop: '1.25rem',
@@ -47,8 +52,30 @@ const BusinessObjective = ({
         <TextField fullWidth />
       </Grid>
 
-      <Grid item xs={12} lg={6}>
+      <Grid item xs={12} lg={3} px={{ xs: '0rem', lg: '0.75rem' }}
+        pt={{ xs: '1.25rem', lg: '0rem' }}>
+        <Typography variant="h2" sx={{ pb: '0.5rem' }}>
+          Start Date
+        </Typography>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DatePicker
+            sx={{ width: '100%' }}
+            format="DD/MM/YYYY"
+          />
+        </LocalizationProvider>
+      </Grid>
 
+      <Grid item xs={12} lg={3} px={{ xs: '0rem', lg: '0.75rem' }}
+        pt={{ xs: '1.25rem', lg: '0rem' }}>
+        <Typography variant="h2" sx={{ pb: '0.5rem' }}>
+          End Date
+        </Typography>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DatePicker
+            sx={{ width: '100%' }}
+            format="DD/MM/YYYY"
+          />
+        </LocalizationProvider>
       </Grid>
     </Grid>
   );
