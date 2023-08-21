@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import { Typography } from "@mui/material";
 import Colors from "../../core/ColorPalette";
 
 interface Props {
@@ -19,6 +20,7 @@ const TabSelector = ({
   }}>
     {
       tabTitles.map((title, key) => <div key={key} style={{
+        cursor: 'pointer',
         borderRadius: '10px 10px 0px 0px',
         backgroundColor:`${
           focusTab === key ? Colors.AVERTRO_WHITE : Colors.PAGE_BORDER
@@ -26,7 +28,11 @@ const TabSelector = ({
         padding: '0.5rem 1.5rem 0.5rem 1.5rem',
         transition: '500ms',
       }} onClick={() => setFocusTab(key)}>
-        <h2 style={{margin: '0' }}>{title}</h2>
+        <Typography variant="h2" sx={{
+          m: '0',
+        }}>
+          {title}
+        </Typography>
       </div>)
     }
   </div>
