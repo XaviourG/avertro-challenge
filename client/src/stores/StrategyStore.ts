@@ -1,3 +1,6 @@
+import BusinessObjectiveDTO from "../models/DTOs/BusinessObjectiveDTO";
+import MissionContentDTO from "../models/DTOs/MissionContentDTO";
+import { missionSeedData, objectivesSeedData } from "../models/seed/ChallengeSeedData";
 import RootStore from "./RootStore";
 
 class StrategyStore {
@@ -5,13 +8,15 @@ class StrategyStore {
     rootStore: RootStore
   ) {
     this.store = rootStore;
-  }
-
-  helloWorld = () => {
-    console.log('Hello World!');
+    this.objectives = objectivesSeedData;
+    this.mission = missionSeedData;
   }
 
   protected store: RootStore;
+  
+  objectives: BusinessObjectiveDTO[];
+
+  mission: MissionContentDTO;
 }
 
 export default StrategyStore;
