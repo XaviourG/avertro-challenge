@@ -25,11 +25,14 @@ const TabbedDisplay = ({
     }}>
       <TabSelector
         tabTitles={tabs.map((tab) => tab.title)}
+        focusTab={focusTab}
         setFocusTab={setFocusTab}
       />
       <div style={{
         backgroundColor: Colors.AVERTRO_WHITE,
-        borderRadius: '0px, 10px, 10px, 10px',
+        borderRadius: '0px 10px 10px 10px',
+        padding: '2rem',
+        transition: '500ms',
       }}>
         {tabs[focusTab].element}
       </div>
