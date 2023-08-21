@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { useStore } from "../stores/RootStore";
-import TopNav from "../components/TopNav";
+import TopNav from "../components/navigation/TopNav";
+import TabbedDisplay from "../components/tabbed-display/TabbedDisplay";
 
 const SecurityStrategyAuditPage = (): ReactElement => {
   const { StrategyStore } = useStore();
@@ -11,7 +12,13 @@ const SecurityStrategyAuditPage = (): ReactElement => {
     alignItems: 'center',
   }}>
     <TopNav/>
-    hello world
+    <TabbedDisplay
+      startTab={1}
+      tabs={[
+        {title: 'Mission & Vision', element: <>MISSION TAB</>},
+        {title: 'Strategic Business Objectives', element: <>OBJECTIVES TAB</>}
+      ]}
+    />
     </div>
 }
 

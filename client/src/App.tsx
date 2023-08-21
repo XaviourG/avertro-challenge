@@ -1,8 +1,13 @@
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import SecurityStrategyAuditPage from './pages/SecurityStrategyAuditPage';
+import DefaultTheme from './core/Theme';
 
 function App() {
   return (
-    <SecurityStrategyAuditPage />
+    <ThemeProvider theme={DefaultTheme}>
+      <CssBaseline/>
+      <SecurityStrategyAuditPage />
+    </ThemeProvider>
   );
 }
 
