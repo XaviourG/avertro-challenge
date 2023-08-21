@@ -3,6 +3,12 @@ import Colors from "./ColorPalette";
 
 const DefaultTheme = createTheme({
   palette: {
+    primary: {
+      main: Colors.AVERTRO_BLUE,
+    },
+    error: {
+      main: Colors.AVERTRO_RED,
+    },
     background: {
       default: Colors.AVERTRO_BACKGROUND,
     }
@@ -37,6 +43,45 @@ const DefaultTheme = createTheme({
       color: Colors.BODY_TEXT,
       fontWeight: 400,
       lineHeight: '1.125rem',
+    },
+  },
+  components: {
+    MuiTextField: {
+      defaultProps: {
+        sx: {
+
+        },
+        // inner element
+        inputProps: {
+          sx: {
+            fontFamily: 'Nunito',
+            fontSize: '0.8rem',
+            color: Colors.BODY_TEXT,
+            fontWeight: 400,
+            lineHeight: '1.125rem',
+            borderRadius: '5px',
+            border: 'none !important'
+          }
+        },
+        // outer element
+        InputProps: {
+          sx: {
+            border: 'none !important',
+            "& fieldset": {
+              border: `1px solid ${Colors.TEXT_BORDER}`,
+              borderRadius: '5px',
+            },
+            "&:hover fieldset": {
+              border: `1px solid ${Colors.TEXT_BORDER}`,
+              borderRadius: '5px',
+            },
+            "&.Mui-focused fieldset": {
+              border: `1px solid ${Colors.AVERTRO_BLUE}`,
+              borderRadius: '5px',
+            },
+          }
+        },
+      },
     },
   },
 });

@@ -2,6 +2,8 @@ import { ReactElement } from "react";
 import { Typography } from "@mui/material";
 import TabbedDisplay from "../components/tabbed-display/TabbedDisplay";
 import Colors from "../core/ColorPalette";
+import MissionAndVision from "../components/mission/MissionAndVision";
+import BusinessObjectiveList from "../components/business-objectives/BusinessObjectiveList";
 
 const SecurityStrategyAuditPage = (): ReactElement => (
   <div style={{
@@ -27,8 +29,14 @@ const SecurityStrategyAuditPage = (): ReactElement => (
       <TabbedDisplay
         startTab={1}
         tabs={[
-          {title: 'Mission & Vision', element: <>MISSION TAB</>},
-          {title: 'Strategic Business Objectives', element: <>OBJECTIVES TAB</>}
+          {
+            title: 'Mission & Vision',
+            element: <MissionAndVision/>,
+          },
+          {
+            title: 'Strategic Business Objectives',
+            element: <BusinessObjectiveList/>,
+          }
         ]}
       />
     </div>
