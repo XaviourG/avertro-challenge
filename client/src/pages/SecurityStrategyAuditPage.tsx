@@ -1,11 +1,10 @@
 import { ReactElement } from "react";
-import { useStore } from "../stores/RootStore";
+import { Typography } from "@mui/material";
 import TabbedDisplay from "../components/tabbed-display/TabbedDisplay";
+import Colors from "../core/ColorPalette";
 
-const SecurityStrategyAuditPage = (): ReactElement => {
-  const { StrategyStore } = useStore();
-
-  return <div style={{
+const SecurityStrategyAuditPage = (): ReactElement => (
+  <div style={{
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -15,6 +14,16 @@ const SecurityStrategyAuditPage = (): ReactElement => {
       maxWidth: '90em',
       padding: '2rem',
     }}>
+      <div style={{
+        width: '100%',
+        borderBottom: `1px solid ${Colors.PAGE_BORDER}`,
+        paddingBottom: '1.25rem',
+        marginBottom: '1.5rem',
+      }}>
+        <Typography variant="h1">
+          Set Security Strategy
+        </Typography>
+      </div>
       <TabbedDisplay
         startTab={1}
         tabs={[
@@ -23,7 +32,7 @@ const SecurityStrategyAuditPage = (): ReactElement => {
         ]}
       />
     </div>
-    </div>
-}
+  </div>
+);
 
 export default SecurityStrategyAuditPage;
