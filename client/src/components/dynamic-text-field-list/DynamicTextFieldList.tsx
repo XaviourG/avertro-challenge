@@ -38,10 +38,6 @@ const DynamicTextFieldList = observer(({
     updateFields(slice);
   }
 
-  useEffect(() => {
-    console.log('err re-render')
-  }, [error, helperText])
-
   return (
     <div style={{
       width: '100%',

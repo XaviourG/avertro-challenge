@@ -1,11 +1,24 @@
 import BusinessObjectiveDTO from "../../models/DTOs/BusinessObjectiveDTO";
-import BusinessObjectiveFormState, { EmptyFormState } from "../../models/DTOs/BusinessObjectiveFormState";
+import BusinessObjectiveFormState from "../../models/DTOs/BusinessObjectiveFormState";
 
 
 const ObjectivesFormValidator = (
   formData: BusinessObjectiveDTO,
 ): BusinessObjectiveFormState => {
-  const validation: BusinessObjectiveFormState = EmptyFormState;
+  const validation: BusinessObjectiveFormState = {
+    errors: {
+      title: false,
+      keyMeasures: false,
+      startDate: false,
+      endDate: false,
+    },
+    errorText: {
+      title: '',
+      keyMeasures: '',
+      startDate: '',
+      endDate: '',
+    },
+  };
 
   if (formData.title.length < 2) {
     validation.errors.title = true;

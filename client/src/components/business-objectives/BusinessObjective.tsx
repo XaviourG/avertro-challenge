@@ -60,6 +60,8 @@ const BusinessObjective = observer(({
     setFormData({ ...formData, keyMeasures: fields });
   }
 
+  const keyMeasuresError = formState.errors.keyMeasures;
+
   const {
     title,
     keyMeasures,
@@ -103,7 +105,7 @@ const BusinessObjective = observer(({
             fields={keyMeasures}
             maxFields={3}
             updateFields={onKeyMeasureChange}
-            error={formState.errors.keyMeasures}
+            error={keyMeasuresError}
             helperText={formState.errorText.keyMeasures}
           />
         </Grid>
