@@ -14,7 +14,7 @@ const SecurityStrategyAuditPage = (): ReactElement => (
     <div style={{
       width: '100%',
       maxWidth: '90em',
-      padding: '2rem',
+      padding: '1rem',
     }}>
       <div style={{
         width: '100%',

@@ -78,9 +78,8 @@ const BusinessObjective = observer(({
       <Grid container sx={{
         border: `1px solid ${Colors.TEXT_BORDER}`,
         borderRadius: '10px',
-        padding: '2rem',
         paddingTop: '1.5rem',
-      }}>
+      }} px={{ xs: '1rem', lg: '2rem'}} py={{ xs: '1.5rem', lg: '2rem'}}>
         <Grid item xs={12} lg={6} pr={{ xs: '0rem', lg: '0rem' }}>
           <Typography variant="h2" sx={{ pb: '0.5rem' }}>
             {`Objective ${index+1}`}
