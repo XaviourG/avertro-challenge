@@ -22,7 +22,7 @@ const ObjectivesFormValidator = (
 
   if (formData.title.length < 2) {
     validation.errors.title = true;
-    validation.errorText.title = 'Your objective must be between at least 1 character in length'
+    validation.errorText.title = 'Your objective must be at least 1 character in length'
   } else if (formData.title.length > 255) {
     validation.errors.title = true;
     validation.errorText.title = 'Your objective cannot exceed 255 characters in length'
