@@ -5,16 +5,17 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import BusinessObjectiveDTO from "../../models/DTOs/BusinessObjectiveDTO";
 import Colors from "../../core/ColorPalette";
 import DynamicTextFieldList from "../dynamic-text-field-list/DynamicTextFieldList";
+import AvertroDatePicker from "../date-picker/AvertroDatePicker";
 
 interface Props {
   content: BusinessObjectiveDTO,
-  key: number,
+  index: number,
   updateObjective: (objective: BusinessObjectiveDTO, key: number) => void,
 }
 
 const BusinessObjective = ({
   content,
-  key,
+  index,
   updateObjective,
 }: Props): ReactElement => {
   const [formData, setFormData] = useState<BusinessObjectiveDTO>(content);
@@ -26,9 +27,19 @@ const BusinessObjective = ({
     setFormData({ ...formData, [name]: value });
   }
 
+  const onChangeDate = (
+    value: Date | null,
+    fieldName: string,
+  ) => {
+    if (!['startDate', 'endDate'].includes(fieldName)) {
+      throw new Error('Illegal Input Assertion')
+    }
+    setFormData({ ...formData, [fieldName]: value });
+  }
+
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
+    updateObjective(formData, index);
   }
 
   const onKeyMeasureChange = (fields: string[]) => {
@@ -52,7 +63,7 @@ const BusinessObjective = ({
       }}>
         <Grid item xs={12} lg={6} pr={{ xs: '0rem', lg: '2rem' }}>
           <Typography variant="h2" sx={{ pb: '0.5rem' }}>
-            {`Objective ${key}`}
+            {`Objective ${index+1}`}
           </Typography>
           <TextField
             name='title'
@@ -76,28 +87,22 @@ const BusinessObjective = ({
 
         <Grid item xs={12} lg={3} px={{ xs: '0rem', lg: '0.75rem' }}
           pt={{ xs: '1.25rem', lg: '0rem' }}>
-          <Typography variant="h2" sx={{ pb: '0.5rem' }}>
-            Start Date
-          </Typography>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
-              sx={{ width: '100%' }}
-              format="DD/MM/YYYY"
-            />
-          </LocalizationProvider>
+          <AvertroDatePicker
+            title='Start Date'
+            name='startDate'
+            value={startDate}
+            onChange={onChangeDate}
+          />
         </Grid>
 
         <Grid item xs={12} lg={3} px={{ xs: '0rem', lg: '0.75rem' }}
           pt={{ xs: '1.25rem', lg: '0rem' }}>
-          <Typography variant="h2" sx={{ pb: '0.5rem' }}>
-            End Date
-          </Typography>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
-              sx={{ width: '100%' }}
-              format="DD/MM/YYYY"
-            />
-          </LocalizationProvider>
+          <AvertroDatePicker
+            title='End Date'
+            name='endDate'
+            value={endDate}
+            onChange={onChangeDate}
+          />
         </Grid>
         <Grid item xs={12}>
           <div style={{
