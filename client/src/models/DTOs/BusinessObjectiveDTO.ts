@@ -1,8 +1,8 @@
 interface BusinessObjectiveDTO {
   title: string,
   keyMeasures: string[],
-  startDate: Date,
-  endDate: Date,
+  startDate: Date | null,
+  endDate: Date | null,
 }
 
 export default BusinessObjectiveDTO;

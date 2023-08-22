@@ -16,7 +16,6 @@ const DynamicTextFieldList = ({
   fields,
   updateFields,
 }: Props): ReactElement => {
-  const [localFields, setLocalFields] = useState<string[]>([]);
 
   return (
     <div style={{
@@ -37,7 +36,7 @@ const DynamicTextFieldList = ({
             display: 'flex',
             cursor: 'pointer',
             paddingRight: '1.5rem'
-          }} onClick={() => setLocalFields([...localFields, ''])}>
+          }} onClick={() => updateFields([...fields, ''])}>
             <Typography variant="h3">
               {addFieldText}
             </Typography>
@@ -52,14 +51,13 @@ const DynamicTextFieldList = ({
           </div>
         </div>
         <div style={{
-          paddingTop: '1.25rem',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'space-between',
         }}>
           {
-            localFields.map((field, key) => (
+            fields.map((field, key) => (
               <div key={key} style={{
                 display: 'flex',
                 width: '100%',
@@ -70,9 +68,9 @@ const DynamicTextFieldList = ({
                   fullWidth
                   value={field}
                   onChange={(e) => {
-                    const arr = localFields;
+                    const arr = fields;
                     arr[key] = e.target.value;
-                    setLocalFields(arr);
+                    updateFields(arr);
                   }}
                 />
                 <div style={{
@@ -82,7 +80,7 @@ const DynamicTextFieldList = ({
                   width: '1.5rem',
                 }}>
                   <button style={{
-                    display: `${field.length > 0 ? 'flex' : 'none'}`,
+                    display: `${(field.length > 0 && fields.length > 1) ? 'flex' : 'none'}`,
                     border: 'none',
                     background: 'none',
                     padding: '0',
