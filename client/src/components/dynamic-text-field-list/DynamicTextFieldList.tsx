@@ -1,9 +1,9 @@
-import { TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { ReactElement, useEffect } from "react";
+import { Typography, useMediaQuery, useTheme } from "@mui/material";
+import { ReactElement } from "react";
 import PlusIcon from "../../assets/icons/avertro_plus_icon";
-import MinusIcon from "../../assets/icons/avertro_minus_icon";
 import Colors from "../../core/ColorPalette";
 import { observer } from "mobx-react-lite";
+import DynamicTextField from "./DynamicTextField";
 
 interface Props {
   title: string,
@@ -86,43 +86,14 @@ const DynamicTextFieldList = observer(({
         }}>
           {
             fields.map((field, key) => (
-              <div key={key} style={{
-                display: 'flex',
-                width: '100%',
-                alignItems: 'center',
-                paddingBottom: '0.5rem',  
-              }}>
-                <TextField
-                  fullWidth
-                  multiline
-                  type='text'
-                  value={field}
-                  name={`key measure ${key}`}
-                  onChange={(e) => {
-                    const arr = fields;
-                    arr[key] = e.target.value;
-                    updateFields(arr);
-                  }}
-                  error={error}
-                />
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  paddingLeft: '0.5rem',
-                  width: '1.5rem',
-                }}>
-                  <button style={{
-                    display: `${(fields.length <= 1 && field.length < 1) ? 'none' : 'flex'}`,
-                    border: 'none',
-                    background: 'none',
-                    padding: '0',
-                    margin: '0',
-                    cursor: 'pointer',
-                  }} onClick={() => removeField(key)}>
-                    <MinusIcon size={'1rem'} />
-                  </button>
-                </div>
-              </div>
+              <DynamicTextField
+                index={key}
+                field={field}
+                fields={fields}
+                updateFields={updateFields}
+                removeField={removeField}
+                error={error}
+              />
             ))
           }
         </div>
