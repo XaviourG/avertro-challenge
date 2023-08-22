@@ -1,12 +1,14 @@
 import { TextField, Typography } from "@mui/material";
-import { ReactElement, useState } from "react";
+import { ReactElement } from "react";
 import PlusIcon from "../../assets/icons/avertro_plus";
 import MinusIcon from "../../assets/icons/avertro_minus";
+import Colors from "../../core/ColorPalette";
 
 interface Props {
   title: string,
   addFieldText: string,
   fields: string[],
+  maxFields: number,
   updateFields: (fields: string[]) => void,
 }
 
@@ -14,8 +16,14 @@ const DynamicTextFieldList = ({
   title,
   addFieldText,
   fields,
+  maxFields,
   updateFields,
 }: Props): ReactElement => {
+  const addField = () => {
+    if (fields.length < maxFields) {
+      updateFields([...fields, '']);
+    }
+  }
 
   return (
     <div style={{
@@ -36,8 +44,8 @@ const DynamicTextFieldList = ({
             display: 'flex',
             cursor: 'pointer',
             paddingRight: '1.5rem'
-          }} onClick={() => updateFields([...fields, ''])}>
-            <Typography variant="h3">
+          }} onClick={addField}>
+            <Typography variant="h3" sx={{color: `${(fields.length < maxFields) ? Colors.AVERTRO_BLUE : Colors.TEXT_BORDER}`}}>
               {addFieldText}
             </Typography>
             <div style={{
@@ -46,7 +54,11 @@ const DynamicTextFieldList = ({
               alignItems: 'center',
               paddingLeft: '0.5rem',
             }}>
-              <PlusIcon size={'1rem'}/>
+              <PlusIcon
+                size="1rem"
+                primaryColor={(fields.length < maxFields) ? Colors.AVERTRO_BLUE : Colors.TEXT_BORDER}
+                secondaryColor={Colors.AVERTRO_WHITE}
+              />
             </div>
           </div>
         </div>

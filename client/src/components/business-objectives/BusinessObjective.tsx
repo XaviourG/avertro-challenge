@@ -69,6 +69,7 @@ const BusinessObjective = ({
             title={'Key Measures'}
             addFieldText={'Add additional key measure'}
             fields={keyMeasures}
+            maxFields={3}
             updateFields={onKeyMeasureChange}
           />
         </Grid>

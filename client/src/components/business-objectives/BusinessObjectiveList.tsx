@@ -34,7 +34,11 @@ const BusinessObjectiveList = (): ReactElement => {
           boxShadow: 'none',
           borderRadius: '5px',
         }}>
-          <PlusIcon invert size="1rem" />
+          <PlusIcon
+            size="1rem"
+            primaryColor={Colors.AVERTRO_WHITE}
+            secondaryColor={Colors.AVERTRO_BLUE}
+          />
           <Typography sx={{
             pl: '0.5rem',
             fontFamily: 'Inter',

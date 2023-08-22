@@ -2,15 +2,15 @@ import Colors from "../../core/ColorPalette";
 
 interface Props {
   size: string,
-  invert?: boolean,
+  primaryColor?: string,
+  secondaryColor?: string,
 }
 
 const PlusIcon = ({
   size,
-  invert = false,
+  primaryColor = Colors.AVERTRO_BLUE,
+  secondaryColor = Colors.AVERTRO_WHITE,
 }: Props) => {
-  const primaryColor = invert ? Colors.AVERTRO_WHITE : Colors.AVERTRO_BLUE;
-  const secondaryColor = invert ? Colors.AVERTRO_BLUE : Colors.AVERTRO_WHITE;
 
   return (
     <div style={{
