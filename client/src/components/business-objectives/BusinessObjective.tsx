@@ -89,6 +89,7 @@ const BusinessObjective = observer(({
             onChange={onChangeInput}
             value={title}
             fullWidth
+            multiline
             sx={{
               pr: '1.5rem'
             }}
@@ -102,6 +103,8 @@ const BusinessObjective = observer(({
             fields={keyMeasures}
             maxFields={3}
             updateFields={onKeyMeasureChange}
+            error={formState.errors.keyMeasures}
+            helperText={formState.errorText.keyMeasures}
           />
         </Grid>
 

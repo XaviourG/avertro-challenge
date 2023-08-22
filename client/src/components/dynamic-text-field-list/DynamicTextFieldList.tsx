@@ -1,8 +1,9 @@
 import { TextField, Typography } from "@mui/material";
-import { ReactElement } from "react";
+import { ReactElement, useEffect } from "react";
 import PlusIcon from "../../assets/icons/avertro_plus_icon";
 import MinusIcon from "../../assets/icons/avertro_minus_icon";
 import Colors from "../../core/ColorPalette";
+import { observer } from "mobx-react-lite";
 
 interface Props {
   title: string,
@@ -10,14 +11,18 @@ interface Props {
   fields: string[],
   maxFields: number,
   updateFields: (fields: string[]) => void,
+  error: boolean,
+  helperText: string,
 }
 
-const DynamicTextFieldList = ({
+const DynamicTextFieldList = observer(({
   title,
   addFieldText,
   fields,
   maxFields,
   updateFields,
+  error,
+  helperText,
 }: Props): ReactElement => {
   const addField = () => {
     if (fields.length < maxFields) {
@@ -32,6 +37,10 @@ const DynamicTextFieldList = ({
     }
     updateFields(slice);
   }
+
+  useEffect(() => {
+    console.log('err re-render')
+  }, [error, helperText])
 
   return (
     <div style={{
@@ -86,6 +95,7 @@ const DynamicTextFieldList = ({
               }}>
                 <TextField
                   fullWidth
+                  multiline
                   type='text'
                   value={field}
                   name={`key measure ${key}`}
@@ -94,6 +104,7 @@ const DynamicTextFieldList = ({
                     arr[key] = e.target.value;
                     updateFields(arr);
                   }}
+                  error={error}
                 />
                 <div style={{
                   display: 'flex',
@@ -116,8 +127,14 @@ const DynamicTextFieldList = ({
             ))
           }
         </div>
+        {
+          helperText.length >= 1 &&
+          <Typography color={error ? 'error' : 'primary'}>
+            {helperText}
+          </Typography>
+        }
     </div>
   );
-}
+});
 
 export default DynamicTextFieldList;

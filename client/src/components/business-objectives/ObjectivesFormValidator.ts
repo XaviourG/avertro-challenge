@@ -18,6 +18,21 @@ const ObjectivesFormValidator = (
     validation.errorText.title = ''
   }
 
+  if (formData.keyMeasures.length <= 1 && formData.keyMeasures[0].length < 1) {
+    validation.errors.keyMeasures = true;
+    validation.errorText.keyMeasures = 'An objective must have at least one key measure';
+  } else if (
+    ((formData.keyMeasures.length >= 1) && (formData.keyMeasures[0].length < 1)) ||
+    ((formData.keyMeasures.length >= 2) && (formData.keyMeasures[1].length < 1)) ||
+    ((formData.keyMeasures.length >= 3) && (formData.keyMeasures[2].length < 1))
+  ) {
+    validation.errors.keyMeasures = true;
+    validation.errorText.keyMeasures = 'Objective key measures cannot be blank';
+  } else {
+    validation.errors.keyMeasures = false;
+    validation.errorText.keyMeasures = '';
+  }
+
   return validation;
 };
 
