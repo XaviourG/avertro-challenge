@@ -1,24 +1,34 @@
-import { ReactElement, useCallback, useState } from "react";
+import { observer } from "mobx-react-lite"
+import { ReactElement, useState } from "react";
 import { Typography, TextField, Grid, Button } from "@mui/material";
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import BusinessObjectiveDTO from "../../models/DTOs/BusinessObjectiveDTO";
 import Colors from "../../core/ColorPalette";
 import DynamicTextFieldList from "../dynamic-text-field-list/DynamicTextFieldList";
 import AvertroDatePicker from "../date-picker/AvertroDatePicker";
+import { useStore } from "../../stores/RootStore";
 
 interface Props {
   content: BusinessObjectiveDTO,
   index: number,
   updateObjective: (objective: BusinessObjectiveDTO, key: number) => void,
+  deleteObjective: (key: number) => void,
 }
 
-const BusinessObjective = ({
+const BusinessObjective = observer(({
   content,
   index,
   updateObjective,
+  deleteObjective,
 }: Props): ReactElement => {
+  const { StrategyStore } = useStore();
+
   const [formData, setFormData] = useState<BusinessObjectiveDTO>(content);
+
+  const removeForm = () => {
+    console.log('removing');
+    console.log(StrategyStore)
+    StrategyStore.deleteObjective(index);
+  }
 
   const onChangeInput = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -119,7 +129,7 @@ const BusinessObjective = ({
               textTransform: 'none',
               boxShadow: 'none',
               borderRadius: '5px',
-            }}>
+            }} onClick={removeForm}>
               <Typography sx={{
                 fontFamily: 'Inter',
                 fontWeight: 500,
@@ -149,6 +159,6 @@ const BusinessObjective = ({
       </Grid>
     </form>
   );
-}
+});
 
 export default BusinessObjective;

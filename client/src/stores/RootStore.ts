@@ -1,4 +1,9 @@
+import { configure } from 'mobx';
 import StrategyStore from "./StrategyStore";
+
+configure({
+  enforceActions: 'always',
+});
 
 class RootStore {
   constructor() {

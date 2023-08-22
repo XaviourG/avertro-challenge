@@ -1,12 +1,17 @@
-import { ReactElement } from "react";
+import { observer } from "mobx-react-lite"
+import { ReactElement, useEffect } from "react";
 import { useStore } from "../../stores/RootStore";
 import BusinessObjective from "./BusinessObjective";
 import { Button, Typography } from "@mui/material";
 import Colors from "../../core/ColorPalette";
 import PlusIcon from "../../assets/icons/avertro_plus_icon";
 
-const BusinessObjectiveList = (): ReactElement => {
+const BusinessObjectiveList = observer((): ReactElement => {
   const { StrategyStore } = useStore();
+
+  useEffect(() => {
+    console.log('rendering')
+  }, []);
 
   return (
     <div style={{
@@ -21,6 +26,7 @@ const BusinessObjectiveList = (): ReactElement => {
               content={objective}
               index={key}
               updateObjective={StrategyStore.updateObjectiveByKey}
+              deleteObjective={StrategyStore.deleteObjective}
             />
           </div>
         ))
@@ -33,7 +39,7 @@ const BusinessObjectiveList = (): ReactElement => {
           textTransform: 'none',
           boxShadow: 'none',
           borderRadius: '5px',
-        }}>
+        }} onClick={StrategyStore.addObjective}>
           <PlusIcon
             size="1rem"
             primaryColor={Colors.AVERTRO_WHITE}
@@ -50,7 +56,7 @@ const BusinessObjectiveList = (): ReactElement => {
         </Button>
       </div>
     </div>
-  );
-}
+  )
+});
 
 export default BusinessObjectiveList;

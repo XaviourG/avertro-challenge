@@ -1,3 +1,4 @@
+import { makeAutoObservable, runInAction } from 'mobx';
 import BusinessObjectiveDTO from "../models/DTOs/BusinessObjectiveDTO";
 import MissionContentDTO from "../models/DTOs/MissionContentDTO";
 import { missionSeedData, objectivesSeedData } from "../models/seed/ChallengeSeedData";
@@ -10,6 +11,7 @@ class StrategyStore {
     this.store = rootStore;
     this.objectives = objectivesSeedData;
     this.mission = missionSeedData;
+    makeAutoObservable(this);
   }
 
   protected store: RootStore;
@@ -22,8 +24,31 @@ class StrategyStore {
     objectives: BusinessObjectiveDTO,
     key: number,
   ): void => {
-    this.objectives[key] = objectives;
-  }
+    runInAction(() => {
+      this.objectives[key] = objectives;
+    });
+  };
+
+  deleteObjective = async (key: number): Promise<void> => {
+    console.log('henlo')
+    runInAction(() => {
+      this.objectives = [
+        ...this.objectives.slice(0, key),
+        ...this.objectives.slice(key+1),
+      ]
+    });
+  };
+
+  addObjective = (): void => {
+    runInAction(() => {
+      this.objectives = [...this.objectives, {
+        title: '',
+        keyMeasures: [''],
+        startDate: null,
+        endDate: null,
+      }];
+    });
+  };
 }
 
 export default StrategyStore;
