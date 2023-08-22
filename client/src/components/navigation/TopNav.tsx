@@ -13,6 +13,7 @@ const TopNav = (): ReactElement =>
     boxShadow: '0px 4px 10px 0px #0000000A',
     position: 'sticky',
     top: 0,
+    zIndex: 100,
   }}>
     <a href="https://www.avertro.com/">
       <AvertroLogo/>
