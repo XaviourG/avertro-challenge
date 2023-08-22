@@ -22,7 +22,7 @@ const AvertroSelector = ({
     <div style={{
       display: 'flex',
       width: '100%',
-      borderRadius: '10px',
+      borderRadius: '5px',
       backgroundColor: Colors.AVERTRO_BACKGROUND,
       padding: '0rem',
       border: `2px solid ${Colors.AVERTRO_BACKGROUND}`
@@ -35,7 +35,7 @@ const AvertroSelector = ({
             width: '100%',
             padding: '0.25rem 1rem 0.25rem 1rem',
             backgroundColor: (key === selected) ? Colors.AVERTRO_WHITE : Colors.AVERTRO_BACKGROUND,
-            borderRadius: '10px',
+            borderRadius: '5px',
             transition: '500ms',
             cursor: 'pointer',
             color: (key === selected) ? Colors.BODY_TEXT : Colors.PAGE_BORDER,

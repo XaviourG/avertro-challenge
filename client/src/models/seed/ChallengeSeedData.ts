@@ -22,11 +22,11 @@ export const objectivesSeedData: BusinessObjectiveDTO[] = [
 ]
 
 export const missionSeedData: MissionContentDTO = {
-  mission: 'To boldy..',
-  history: 'major breech',
+  mission: 'To showcase my skills to Ani & Ian',
+  history: '',
   factors: {
     experience: 'Experienced',
     clientSize: 'Startup',
-    workType: 'Audit',
+    workType: 'Integration',
   },
 };
