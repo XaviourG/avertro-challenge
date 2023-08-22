@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite"
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { Typography, TextField, Grid, Button } from "@mui/material";
 import BusinessObjectiveDTO from "../../models/DTOs/BusinessObjectiveDTO";
 import Colors from "../../core/ColorPalette";
@@ -25,7 +25,6 @@ const BusinessObjective = observer(({
   const [formData, setFormData] = useState<BusinessObjectiveDTO>(content);
 
   const removeForm = () => {
-    console.log('removing');
     console.log(StrategyStore)
     StrategyStore.deleteObjective(index);
   }
@@ -35,6 +34,7 @@ const BusinessObjective = observer(({
   ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    updateObjective({ ...formData, [name]: value }, index);
   }
 
   const onChangeDate = (
@@ -45,6 +45,7 @@ const BusinessObjective = observer(({
       throw new Error('Illegal Input Assertion')
     }
     setFormData({ ...formData, [fieldName]: value });
+    updateObjective({ ...formData, [fieldName]: value }, index);
   }
 
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
@@ -62,6 +63,10 @@ const BusinessObjective = observer(({
     startDate,
     endDate,
   } = formData;
+  
+  useEffect(() => {
+    setFormData(StrategyStore.objectives[index]);
+  }, [StrategyStore.objectives, index]);
 
   return (
     <form onSubmit={onSubmitForm}>

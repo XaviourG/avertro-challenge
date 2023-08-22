@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite"
-import { ReactElement, useEffect } from "react";
+import { ReactElement } from "react";
 import { useStore } from "../../stores/RootStore";
 import BusinessObjective from "./BusinessObjective";
 import { Button, Typography } from "@mui/material";
@@ -8,10 +8,6 @@ import PlusIcon from "../../assets/icons/avertro_plus_icon";
 
 const BusinessObjectiveList = observer((): ReactElement => {
   const { StrategyStore } = useStore();
-
-  useEffect(() => {
-    console.log('rendering')
-  }, []);
 
   return (
     <div style={{

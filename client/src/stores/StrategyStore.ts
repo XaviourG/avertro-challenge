@@ -30,7 +30,6 @@ class StrategyStore {
   };
 
   deleteObjective = async (key: number): Promise<void> => {
-    console.log('henlo')
     runInAction(() => {
       this.objectives = [
         ...this.objectives.slice(0, key),
