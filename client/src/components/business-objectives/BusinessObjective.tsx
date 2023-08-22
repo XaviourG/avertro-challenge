@@ -28,7 +28,6 @@ const BusinessObjective = observer(({
   const [formState, setFormState] = useState<BusinessObjectiveFormState>(EmptyFormState);
 
   const removeForm = () => {
-    console.log(StrategyStore)
     StrategyStore.deleteObjective(index);
   }
 
