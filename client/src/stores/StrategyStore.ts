@@ -52,6 +52,20 @@ class StrategyStore {
       });
     }
   };
+
+  updateMission = (
+    content: MissionContentDTO,
+  ): void => {
+    runInAction(() => {
+      this.mission = content;
+    });
+  };
+
+  resetMission = (): void => {
+    runInAction(() => {
+      this.mission = missionSeedData;
+    });
+  };
 }
 
 export default StrategyStore;
