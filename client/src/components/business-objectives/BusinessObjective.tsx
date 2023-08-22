@@ -1,19 +1,28 @@
-import { ReactElement } from "react";
+import { ReactElement, useCallback } from "react";
 import { Typography, TextField, Grid } from "@mui/material";
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import BusinessObjectiveDTO from "../../models/DTOs/BusinessObjectiveDTO";
 import Colors from "../../core/ColorPalette";
+import DynamicTextFieldList from "./DynamicTextFieldList";
 
 interface Props {
   content: BusinessObjectiveDTO,
   key: number,
+  updateObjective: (objective: BusinessObjectiveDTO, key: number) => void,
 }
 
 const BusinessObjective = ({
   content,
   key,
+  updateObjective,
 }: Props): ReactElement => {
+
+  const updateFields = useCallback((fields: string[]) => {
+    const update = content;
+    update.keyMeasures = fields;
+    updateObjective(update, key);
+  }, [content, key]);
 
   return (
     <Grid container sx={{
@@ -29,27 +38,17 @@ const BusinessObjective = ({
         <TextField
           fullWidth
           value={content.title}
+          sx={{
+            pr: '1.5rem'
+          }}
         />
 
-        <div style={{
-          paddingTop: '1.25rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}>
-          <Typography variant="h2" sx={{ pb: '0.5rem' }}>
-            Key Measures
-          </Typography>
-          <div style={{
-            display: 'flex',
-            cursor: 'pointer',
-          }}>
-            <Typography variant="h3">
-              Add additional key measure
-            </Typography>
-          </div>
-        </div>
-        <TextField fullWidth />
+        <DynamicTextFieldList
+          title={'Key Measures'}
+          addFieldText={'Add additional key measure'}
+          fields={content.keyMeasures}
+          updateFields={updateFields}
+        />
       </Grid>
 
       <Grid item xs={12} lg={3} px={{ xs: '0rem', lg: '0.75rem' }}

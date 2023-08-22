@@ -17,6 +17,13 @@ class StrategyStore {
   objectives: BusinessObjectiveDTO[];
 
   mission: MissionContentDTO;
+
+  updateObjectiveByKey = (
+    objectives: BusinessObjectiveDTO,
+    key: number,
+  ): void => {
+    this.objectives[key] = objectives;
+  }
 }
 
 export default StrategyStore;

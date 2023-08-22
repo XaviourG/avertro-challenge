@@ -17,6 +17,7 @@ const BusinessObjectiveList = (): ReactElement => {
             <BusinessObjective
               content={objective}
               key={key}
+              updateObjective={StrategyStore.updateObjectiveByKey}
             />
           </div>
         ))
