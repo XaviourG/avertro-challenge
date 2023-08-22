@@ -9,6 +9,8 @@ interface Props {
   name: string,
   value: Date | null,
   onChange: (value: Date | null, fieldName: string) => void,
+  minDate?: Date | null,
+  maxDate?: Date | null,
 }
 
 const DatePickerIcon = () => <CalendarIcon size={'1rem'}/>
@@ -18,6 +20,8 @@ const AvertroDatePicker = ({
   name,
   value,
   onChange,
+  minDate = null,
+  maxDate = null,
 }: Props): ReactElement => {
   return (
     <div style={{
@@ -30,6 +34,8 @@ const AvertroDatePicker = ({
       </Typography>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
+          minDate={minDate}
+          maxDate={maxDate}
           sx={{ width: '100%' }}
           format="DD/MM/YYYY"
           value={value}

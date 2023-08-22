@@ -6,6 +6,8 @@ import Colors from "../../core/ColorPalette";
 import DynamicTextFieldList from "../dynamic-text-field-list/DynamicTextFieldList";
 import AvertroDatePicker from "../date-picker/AvertroDatePicker";
 import { useStore } from "../../stores/RootStore";
+import BusinessObjectiveFormState, { EmptyFormState } from "../../models/DTOs/BusinessObjectiveFormState";
+import ObjectivesFormValidator from "./ObjectivesFormValidator";
 
 interface Props {
   content: BusinessObjectiveDTO,
@@ -23,6 +25,7 @@ const BusinessObjective = observer(({
   const { StrategyStore } = useStore();
 
   const [formData, setFormData] = useState<BusinessObjectiveDTO>(content);
+  const [formState, setFormState] = useState<BusinessObjectiveFormState>(EmptyFormState);
 
   const removeForm = () => {
     console.log(StrategyStore)
@@ -50,6 +53,7 @@ const BusinessObjective = observer(({
 
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormState(ObjectivesFormValidator(formData));
     updateObjective(formData, index);
   }
 
@@ -89,6 +93,8 @@ const BusinessObjective = observer(({
             sx={{
               pr: '1.5rem'
             }}
+            error={formState.errors.title}
+            helperText={formState.errorText.title}
           />
 
           <DynamicTextFieldList
@@ -108,6 +114,7 @@ const BusinessObjective = observer(({
             name='startDate'
             value={startDate}
             onChange={onChangeDate}
+            maxDate={endDate}
           />
         </Grid>
 
@@ -119,6 +126,7 @@ const BusinessObjective = observer(({
             name='endDate'
             value={endDate}
             onChange={onChangeDate}
+            minDate={startDate}
           />
         </Grid>
       
