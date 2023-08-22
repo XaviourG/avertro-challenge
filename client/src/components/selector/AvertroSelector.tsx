@@ -29,7 +29,7 @@ const AvertroSelector = ({
     }}>
       {
         options.map((option, key) => (
-          <div style={{
+          <div key={key} id={`${name} selector`} style={{
             display: 'flex',
             justifyContent: 'center',
             width: '100%',
@@ -39,7 +39,10 @@ const AvertroSelector = ({
             transition: '500ms',
             cursor: 'pointer',
             color: (key === selected) ? Colors.BODY_TEXT : Colors.PAGE_BORDER,
-          }} onClick={() => setSelected(key)}>
+          }} onClick={() => {
+            setSelected(key);
+            select(option, name);
+          }}>
             <Typography color='inherit' variant="h3" sx={{ fontSize: '0.75rem'}}>
               {option}
             </Typography>

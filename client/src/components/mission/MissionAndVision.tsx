@@ -50,7 +50,7 @@ const MissionAndVision = observer((): ReactElement => {
         px={{ xs: '1rem', lg: '2rem'}}
         py={{ xs: '1.5rem', lg: '2rem'}}
       >
-        <Grid item xs={12} lg={7} pr={{sx: '0rem', lg: '1rem'}}>
+        <Grid item xs={12} lg={7} pr={{sx: '0rem', lg: '2rem'}}>
           <Typography variant="h2" sx={{ pb: '0.5rem' }}>
             {'The Mission'}
           </Typography>
@@ -85,10 +85,10 @@ const MissionAndVision = observer((): ReactElement => {
           pl={{xs: '0rem', lg: '1rem'}}
           pt={{xs: '2rem', lg: '0rem'}}  
         >
-          <Typography variant="h2" sx={{ pb: '0.5rem' }}>
+          <Typography variant="h2">
             {'General Factors'}
           </Typography>
-          <Typography variant="h3" sx={{ pb: '0.25rem' }}>
+          <Typography variant="h3" sx={{ pb: '0.25rem', pt: '1rem' }}>
             {'Client Experience Level'}
           </Typography>
           <AvertroSelector
@@ -97,7 +97,7 @@ const MissionAndVision = observer((): ReactElement => {
             options={ExperienceFactor}
             select={onChangeSelector}
           />
-          <Typography variant="h3" sx={{ pb: '0.25rem', pt: '0.75rem' }}>
+          <Typography variant="h3" sx={{ pb: '0.25rem', pt: '1rem' }}>
             {'Client Organisation Size'}
           </Typography>
           <AvertroSelector
@@ -106,7 +106,7 @@ const MissionAndVision = observer((): ReactElement => {
             options={ClientSizeFactor}
             select={onChangeSelector}
           />
-          <Typography variant="h3" sx={{ pb: '0.25rem', pt: '0.75rem' }}>
+          <Typography variant="h3" sx={{ pb: '0.25rem', pt: '1rem' }}>
             {'Project Work Type'}
           </Typography>
           <AvertroSelector

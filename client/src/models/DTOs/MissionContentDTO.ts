@@ -10,8 +10,8 @@ export const ClientSizeFactor = [
 ]
 
 export const WorkTypeFactor = [
-  'First Project',
-  'Experienced',
+  'Audit',
+  'Integration',
 ]
 
 export interface SecurityFactors {
