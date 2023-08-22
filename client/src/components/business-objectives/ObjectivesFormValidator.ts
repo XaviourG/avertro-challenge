@@ -5,7 +5,6 @@ import BusinessObjectiveFormState, { EmptyFormState } from "../../models/DTOs/Bu
 const ObjectivesFormValidator = (
   formData: BusinessObjectiveDTO,
 ): BusinessObjectiveFormState => {
-  console.log(formData.title);
   const validation: BusinessObjectiveFormState = EmptyFormState;
 
   if (formData.title.length < 2) {

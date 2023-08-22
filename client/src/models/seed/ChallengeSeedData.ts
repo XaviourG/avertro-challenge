@@ -7,16 +7,16 @@ export const objectivesSeedData: BusinessObjectiveDTO[] = [
     keyMeasures: [
       '',
     ],
-    startDate: new Date('15/05/2020'),
-    endDate: new Date('28/05/2020'),
+    startDate: new Date('05/15/2020'),
+    endDate: new Date('05/28/2020'),
   },
   {
     title: 'Reduce Risk',
     keyMeasures: [
       'First Key Measure',
     ],
-    startDate: new Date('15/05/2020'),
-    endDate: new Date('28/05/2020'),
+    startDate: new Date('05/15/2020'),
+    endDate: new Date('05/28/2020'),
   }
 ]
 

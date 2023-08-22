@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import dayjs from 'dayjs';
 import { ReactElement } from "react";
 import CalendarIcon from "../../assets/icons/avertro_calendar_icon";
 
@@ -34,12 +35,18 @@ const AvertroDatePicker = ({
       </Typography>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
-          minDate={minDate}
-          maxDate={maxDate}
+          minDate={dayjs(minDate)}
+          maxDate={dayjs(maxDate)}
           sx={{ width: '100%' }}
           format="DD/MM/YYYY"
-          value={value}
-          onChange={(e) => {onChange(e, name)}}
+          value={dayjs(value)}
+          onChange={(e) => {
+            let date: Date | null = null;
+            if (e) {
+              date = e.toDate()
+            }
+            onChange(date, name);
+          }}
           slots={{
             openPickerIcon: DatePickerIcon,
           }}
