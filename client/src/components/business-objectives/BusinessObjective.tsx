@@ -61,7 +61,7 @@ const BusinessObjective = ({
         padding: '2rem',
         paddingTop: '1.5rem',
       }}>
-        <Grid item xs={12} lg={6} pr={{ xs: '0rem', lg: '2rem' }}>
+        <Grid item xs={12} lg={6} pr={{ xs: '0rem', lg: '0rem' }}>
           <Typography variant="h2" sx={{ pb: '0.5rem' }}>
             {`Objective ${index+1}`}
           </Typography>
@@ -85,7 +85,8 @@ const BusinessObjective = ({
           />
         </Grid>
 
-        <Grid item xs={12} lg={3} px={{ xs: '0rem', lg: '0.75rem' }}
+        <Grid item xs={12} lg={3} pl={{ xs: '0rem', lg: '1.5rem' }}
+        pr={{ xs: '1.5rem', lg: '0rem'}}
           pt={{ xs: '1.25rem', lg: '0rem' }}>
           <AvertroDatePicker
             title='Start Date'
@@ -95,7 +96,8 @@ const BusinessObjective = ({
           />
         </Grid>
 
-        <Grid item xs={12} lg={3} px={{ xs: '0rem', lg: '0.75rem' }}
+        <Grid item xs={12} lg={3} pl={{ xs: '0rem', lg: '1.5rem' }}
+          pr={{ xs: '1.5rem', lg: '0rem'}}
           pt={{ xs: '1.25rem', lg: '0rem' }}>
           <AvertroDatePicker
             title='End Date'
@@ -104,7 +106,8 @@ const BusinessObjective = ({
             onChange={onChangeDate}
           />
         </Grid>
-        <Grid item xs={12}>
+      
+        <Grid item xs={12} pr={{ xs: '1.5rem', lg: '0rem'}}>
           <div style={{
             display: 'flex',
             justifyContent: 'end',

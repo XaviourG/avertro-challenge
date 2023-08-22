@@ -3,7 +3,7 @@ import { useStore } from "../../stores/RootStore";
 import BusinessObjective from "./BusinessObjective";
 import { Button, Typography } from "@mui/material";
 import Colors from "../../core/ColorPalette";
-import PlusIcon from "../../assets/icons/avertro_plus";
+import PlusIcon from "../../assets/icons/avertro_plus_icon";
 
 const BusinessObjectiveList = (): ReactElement => {
   const { StrategyStore } = useStore();

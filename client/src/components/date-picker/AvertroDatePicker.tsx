@@ -2,6 +2,7 @@ import { Typography } from "@mui/material";
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { ReactElement } from "react";
+import CalendarIcon from "../../assets/icons/avertro_calendar_icon";
 
 interface Props {
   title: string,
@@ -9,6 +10,8 @@ interface Props {
   value: Date | null,
   onChange: (value: Date | null, fieldName: string) => void,
 }
+
+const DatePickerIcon = () => <CalendarIcon size={'1rem'}/>
 
 const AvertroDatePicker = ({
   title,
@@ -31,6 +34,12 @@ const AvertroDatePicker = ({
           format="DD/MM/YYYY"
           value={value}
           onChange={(e) => {onChange(e, name)}}
+          slots={{
+            openPickerIcon: DatePickerIcon,
+          }}
+          slotProps={{
+            inputAdornment: { position: 'start'}
+          }}
         />
       </LocalizationProvider>
     </div>

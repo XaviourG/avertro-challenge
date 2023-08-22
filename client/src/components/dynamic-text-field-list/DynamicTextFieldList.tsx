@@ -1,7 +1,7 @@
 import { TextField, Typography } from "@mui/material";
 import { ReactElement } from "react";
-import PlusIcon from "../../assets/icons/avertro_plus";
-import MinusIcon from "../../assets/icons/avertro_minus";
+import PlusIcon from "../../assets/icons/avertro_plus_icon";
+import MinusIcon from "../../assets/icons/avertro_minus_icon";
 import Colors from "../../core/ColorPalette";
 
 interface Props {
