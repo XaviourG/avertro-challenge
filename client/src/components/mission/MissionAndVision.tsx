@@ -4,6 +4,7 @@ import { useStore } from "../../stores/RootStore";
 import { observer } from "mobx-react-lite";
 import Colors from "../../core/ColorPalette";
 import MissionContentDTO from "../../models/DTOs/MissionContentDTO";
+import AvertroSelector from "../selector/AvertroSelector";
 
 const MissionAndVision = observer((): ReactElement => {
   const { StrategyStore } = useStore();
@@ -35,7 +36,10 @@ const MissionAndVision = observer((): ReactElement => {
 
   return (
     <form onSubmit={onSubmitForm}>
-      <Grid container sx={{p: '2rem'}}>
+      <Grid container
+        px={{ xs: '1rem', lg: '2rem'}}
+        py={{ xs: '1.5rem', lg: '2rem'}}
+      >
         <Grid item xs={12} lg={7} pr={{sx: '0rem', lg: '1rem'}}>
           <Typography variant="h2" sx={{ pb: '0.5rem' }}>
             {'The Mission'}
@@ -67,10 +71,17 @@ const MissionAndVision = observer((): ReactElement => {
           />
         </Grid>
 
-        <Grid item xs={12} lg={5} pl={{sx: '0rem', lg: '1rem'}}>
+        <Grid item xs={12} lg={5}
+          pl={{xs: '0rem', lg: '1rem'}}
+          pt={{xs: '2rem', lg: '0rem'}}  
+        >
           <Typography variant="h2" sx={{ pb: '0.5rem' }}>
             {'General Factors'}
           </Typography>
+          <AvertroSelector
+            options={['one', 'two', 'three']}
+            select={(n: number) => console.log(n)}
+          />
         </Grid>
 
         <Grid item xs={12}>
