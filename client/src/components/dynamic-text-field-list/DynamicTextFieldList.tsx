@@ -26,7 +26,11 @@ const DynamicTextFieldList = ({
   }
 
   const removeField = (key: number) => {
-    updateFields([...fields.slice(0, key), ...fields.slice(key + 1)])
+    let slice = [...fields.slice(0, key), ...fields.slice(key + 1)];
+    if (slice.length < 1) {
+      slice = [''];
+    }
+    updateFields(slice);
   }
 
   return (
@@ -96,7 +100,7 @@ const DynamicTextFieldList = ({
                   width: '1.5rem',
                 }}>
                   <button style={{
-                    display: `${(field.length > 0 && fields.length > 1) ? 'flex' : 'none'}`,
+                    display: `${(field.length > 0) ? 'flex' : 'none'}`,
                     border: 'none',
                     background: 'none',
                     padding: '0',
