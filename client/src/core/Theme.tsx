@@ -11,7 +11,11 @@ const DefaultTheme = createTheme({
     },
     background: {
       default: Colors.AVERTRO_BACKGROUND,
-    }
+    },
+    text: {
+      primary: Colors.BODY_TEXT,
+      secondary: Colors.BODY_TEXT,
+    },
   },
   typography: {
     fontFamily: ['Inter', 'Nunito'].join(','),
