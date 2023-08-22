@@ -28,18 +28,24 @@ const BusinessObjectiveList = observer((): ReactElement => {
         ))
       }
       <div style={{display: 'flex', justifyContent: 'end'}}>
-        <Button color="primary" variant="contained" sx={{
-          ml: '1.75rem',
-          py: '0.75rem',
-          px: '1.25rem',
-          textTransform: 'none',
-          boxShadow: 'none',
-          borderRadius: '5px',
-        }} onClick={StrategyStore.addObjective}>
+        <Button
+          color="primary"
+          disabled={StrategyStore.objectives.length >= StrategyStore.maxObjectiveCount}
+          variant="contained"
+          sx={{
+            ml: '1.75rem',
+            py: '0.75rem',
+            px: '1.25rem',
+            textTransform: 'none',
+            boxShadow: 'none',
+            borderRadius: '5px',
+          }}
+          onClick={StrategyStore.addObjective}
+        >
           <PlusIcon
             size="1rem"
             primaryColor={Colors.AVERTRO_WHITE}
-            secondaryColor={Colors.AVERTRO_BLUE}
+            secondaryColor={(StrategyStore.objectives.length >= StrategyStore.maxObjectiveCount) ? Colors.TEXT_BORDER : Colors.AVERTRO_BLUE}
           />
           <Typography sx={{
             pl: '0.5rem',

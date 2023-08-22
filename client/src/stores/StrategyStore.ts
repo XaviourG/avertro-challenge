@@ -15,6 +15,8 @@ class StrategyStore {
   }
 
   protected store: RootStore;
+
+  maxObjectiveCount: number = 3;
   
   objectives: BusinessObjectiveDTO[];
 
@@ -39,14 +41,16 @@ class StrategyStore {
   };
 
   addObjective = (): void => {
-    runInAction(() => {
-      this.objectives = [...this.objectives, {
-        title: '',
-        keyMeasures: [''],
-        startDate: null,
-        endDate: null,
-      }];
-    });
+    if (this.objectives.length < this.maxObjectiveCount) {
+      runInAction(() => {
+        this.objectives = [...this.objectives, {
+          title: '',
+          keyMeasures: [''],
+          startDate: null,
+          endDate: null,
+        }];
+      });
+    }
   };
 }
 
