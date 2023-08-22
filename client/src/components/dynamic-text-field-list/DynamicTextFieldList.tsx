@@ -25,6 +25,10 @@ const DynamicTextFieldList = ({
     }
   }
 
+  const removeField = (key: number) => {
+    updateFields([...fields.slice(0, key), ...fields.slice(key + 1)])
+  }
+
   return (
     <div style={{
       width: '100%',
@@ -98,7 +102,7 @@ const DynamicTextFieldList = ({
                     padding: '0',
                     margin: '0',
                     cursor: 'pointer',
-                  }} onClick={() => {}}>
+                  }} onClick={() => removeField(key)}>
                     <MinusIcon size={'1rem'} />
                   </button>
                 </div>
