@@ -4,7 +4,7 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import BusinessObjectiveDTO from "../../models/DTOs/BusinessObjectiveDTO";
 import Colors from "../../core/ColorPalette";
-import DynamicTextFieldList from "./DynamicTextFieldList";
+import DynamicTextFieldList from "../dynamic-text-field-list/DynamicTextFieldList";
 
 interface Props {
   content: BusinessObjectiveDTO,

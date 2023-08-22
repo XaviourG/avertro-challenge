@@ -16,7 +16,7 @@ const DynamicTextFieldList = ({
   fields,
   updateFields,
 }: Props): ReactElement => {
-  const [localFields, setLocalFields] = useState<string[]>(fields);
+  const [localFields, setLocalFields] = useState<string[]>([]);
 
   return (
     <div style={{
