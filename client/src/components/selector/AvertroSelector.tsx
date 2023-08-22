@@ -3,15 +3,20 @@ import Colors from "../../core/ColorPalette";
 import { Typography } from "@mui/material";
 
 interface Props {
+  name: string,
   options: string[],
-  select: (index: number) => void,
+  value: string,
+  select: (option: string, name: string) => void,
 }
 
 const AvertroSelector = ({
+  name,
+  value,
   options,
   select,
 }: Props): ReactElement => {
-  const [selected, setSelected] = useState(0);
+  const startIndex = options.indexOf(value);
+  const [selected, setSelected] = useState(startIndex > -1 ? startIndex : 0);
 
   return (
     <div style={{

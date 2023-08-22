@@ -1,5 +1,5 @@
 import BusinessObjectiveDTO from "../DTOs/BusinessObjectiveDTO";
-import MissionContentDTO, { ClientSizeFactor, ExperienceFactor, WorkTypeFactor } from "../DTOs/MissionContentDTO";
+import MissionContentDTO from "../DTOs/MissionContentDTO";
 
 export const objectivesSeedData: BusinessObjectiveDTO[] = [
   {
@@ -25,8 +25,8 @@ export const missionSeedData: MissionContentDTO = {
   mission: 'To boldy..',
   history: 'major breech',
   factors: {
-    experience: ExperienceFactor.First_External_Partner,
-    clientSize: ClientSizeFactor.Startup,
-    workType: WorkTypeFactor.Audit,
+    experience: 'Experienced',
+    clientSize: 'Startup',
+    workType: 'Audit',
   },
 };

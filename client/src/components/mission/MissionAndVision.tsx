@@ -3,7 +3,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { useStore } from "../../stores/RootStore";
 import { observer } from "mobx-react-lite";
 import Colors from "../../core/ColorPalette";
-import MissionContentDTO from "../../models/DTOs/MissionContentDTO";
+import MissionContentDTO, { ClientSizeFactor, ExperienceFactor, WorkTypeFactor } from "../../models/DTOs/MissionContentDTO";
 import AvertroSelector from "../selector/AvertroSelector";
 
 const MissionAndVision = observer((): ReactElement => {
@@ -16,6 +16,16 @@ const MissionAndVision = observer((): ReactElement => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
     StrategyStore.updateMission({ ...formData, [name]: value });
+  }
+
+  const onChangeSelector = (
+    selection: string,
+    name: string,
+  ) => {
+    const data = formData;
+    data.factors = ({...formData.factors, [name]: selection})
+    setFormData(data);
+    StrategyStore.updateMission(data);
   }
 
   const onSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
@@ -78,9 +88,32 @@ const MissionAndVision = observer((): ReactElement => {
           <Typography variant="h2" sx={{ pb: '0.5rem' }}>
             {'General Factors'}
           </Typography>
+          <Typography variant="h3" sx={{ pb: '0.25rem' }}>
+            {'Client Experience Level'}
+          </Typography>
           <AvertroSelector
-            options={['one', 'two', 'three']}
-            select={(n: number) => console.log(n)}
+            name='experience'
+            value={factors.experience}
+            options={ExperienceFactor}
+            select={onChangeSelector}
+          />
+          <Typography variant="h3" sx={{ pb: '0.25rem', pt: '0.75rem' }}>
+            {'Client Organisation Size'}
+          </Typography>
+          <AvertroSelector
+            name='clientSize'
+            value={factors.clientSize}
+            options={ClientSizeFactor}
+            select={onChangeSelector}
+          />
+          <Typography variant="h3" sx={{ pb: '0.25rem', pt: '0.75rem' }}>
+            {'Project Work Type'}
+          </Typography>
+          <AvertroSelector
+            name='workType'
+            value={factors.workType}
+            options={WorkTypeFactor}
+            select={onChangeSelector}
           />
         </Grid>
 
