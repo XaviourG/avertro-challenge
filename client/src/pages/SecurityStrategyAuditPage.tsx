@@ -10,6 +10,7 @@ const SecurityStrategyAuditPage = (): ReactElement => (
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    paddingBottom: '6rem',
   }}>
     <div style={{
       width: '100%',
