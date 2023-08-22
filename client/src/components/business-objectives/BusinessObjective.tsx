@@ -130,6 +130,7 @@ const BusinessObjective = observer(({
         </Grid>
       
         <ObjectiveControllButtons
+          removeText={'Delete'}
           removeForm={removeForm}
         />
       </Grid>

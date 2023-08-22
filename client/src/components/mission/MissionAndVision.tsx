@@ -1,10 +1,10 @@
-import { Button, Grid, TextField, Typography } from "@mui/material";
+import { Grid, TextField, Typography } from "@mui/material";
 import { ReactElement, useEffect, useState } from "react";
 import { useStore } from "../../stores/RootStore";
 import { observer } from "mobx-react-lite";
-import Colors from "../../core/ColorPalette";
 import MissionContentDTO, { ClientSizeFactor, ExperienceFactor, WorkTypeFactor } from "../../models/DTOs/MissionContentDTO";
 import AvertroSelector from "../selector/AvertroSelector";
+import ObjectiveControllButtons from "../business-objectives/ObjectiveControllButtons";
 
 const MissionAndVision = observer((): ReactElement => {
   const { StrategyStore } = useStore();
@@ -117,45 +117,10 @@ const MissionAndVision = observer((): ReactElement => {
           />
         </Grid>
 
-        <Grid item xs={12}>
-          <div style={{
-            display: 'flex',
-            justifyContent: 'end',
-            paddingTop: '1.125rem',
-          }}>
-            <Button color="error" variant="outlined" sx={{
-              py: '0.75rem',
-              px: '1.25rem',
-              textTransform: 'none',
-              boxShadow: 'none',
-              borderRadius: '5px',
-            }} onClick={StrategyStore.resetMission}>
-              <Typography sx={{
-                fontFamily: 'Inter',
-                fontWeight: 500,
-                color: Colors.AVERTRO_RED,
-              }}>
-                Reset
-              </Typography>
-            </Button>
-            <Button type="submit" color="primary" variant="contained" sx={{
-              ml: '1.75rem',
-              py: '0.75rem',
-              px: '1.25rem',
-              textTransform: 'none',
-              boxShadow: 'none',
-              borderRadius: '5px',
-            }}>
-              <Typography sx={{
-                fontFamily: 'Inter',
-                fontWeight: 500,
-                color: Colors.AVERTRO_WHITE,
-              }}>
-                Update
-              </Typography>
-            </Button>
-          </div>
-        </Grid>
+        <ObjectiveControllButtons
+          removeText={'Reset'}
+          removeForm={StrategyStore.resetMission}
+        />
       </Grid>
     </form>
   );

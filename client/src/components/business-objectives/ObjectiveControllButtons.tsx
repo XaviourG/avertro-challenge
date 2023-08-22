@@ -4,10 +4,12 @@ import Colors from "../../core/ColorPalette";
 
 interface Props {
   removeForm: () => void,
+  removeText: string,
 }
 
 const ObjectiveControllButtons = ({
   removeForm,
+  removeText,
 }: Props): ReactElement => {
   const [updating, setUpdating] = useState(false);
 
@@ -36,7 +38,7 @@ const ObjectiveControllButtons = ({
             fontWeight: 500,
             color: Colors.AVERTRO_RED,
           }}>
-            Delete
+            {removeText}
           </Typography>
         </Button>
         <Button type="submit" color="primary" variant="contained" sx={{
