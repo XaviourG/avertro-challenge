@@ -22,7 +22,7 @@ export const objectivesSeedData: BusinessObjectiveDTO[] = [
 ]
 
 export const missionSeedData: MissionContentDTO = {
-  mission: 'To showcase my skills to Ani & Ian',
+  mission: 'To showcase my skills to Ani & Ian..\n  ~ Xaviour Greenhalgh',
   history: '',
   factors: {
     experience: 'Experienced',
