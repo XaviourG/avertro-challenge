@@ -128,7 +128,12 @@ const DynamicTextFieldList = observer(({
         </div>
         {
           helperText.length >= 1 &&
-          <Typography color={error ? 'error' : 'primary'}>
+          <Typography
+            color={error ? 'error' : 'primary'}
+            fontFamily='Inter'
+            fontSize='0.75rem'
+            pl='1rem'
+          >
             {helperText}
           </Typography>
         }
