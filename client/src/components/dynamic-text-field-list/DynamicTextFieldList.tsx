@@ -1,4 +1,4 @@
-import { TextField, Typography } from "@mui/material";
+import { TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { ReactElement, useEffect } from "react";
 import PlusIcon from "../../assets/icons/avertro_plus_icon";
 import MinusIcon from "../../assets/icons/avertro_minus_icon";
@@ -24,6 +24,9 @@ const DynamicTextFieldList = observer(({
   error,
   helperText,
 }: Props): ReactElement => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
   const addField = () => {
     if (fields.length < maxFields) {
       updateFields([...fields, '']);
@@ -59,7 +62,7 @@ const DynamicTextFieldList = observer(({
             paddingRight: '1.5rem'
           }} onClick={addField}>
             <Typography variant="h3" sx={{color: `${(fields.length < maxFields) ? Colors.AVERTRO_BLUE : Colors.TEXT_BORDER}`}}>
-              {addFieldText}
+              {isMobile ? '' : addFieldText}
             </Typography>
             <div style={{
               display: 'flex',
