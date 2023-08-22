@@ -8,6 +8,12 @@ interface Props {
   setFocusTab: (tabIndex: number) => void,
 }
 
+const acronym = (s: string): string => {
+  const words = s.split(' ');
+  const initals = words.map((word) => (word.length >= 1 ? word[0] : ''));
+  return initals.join('');
+}
+
 const TabSelector = ({
   tabTitles,
   focusTab,
@@ -15,39 +21,6 @@ const TabSelector = ({
 }: Props): ReactElement => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
-  if (isMobile) {
-    const minimalTabs = tabTitles.map((title) => {
-      const words = title.split(' ');
-      const initals = words.map((word) => (word.length >= 1 ? word[0] : ''));
-      return initals.join('');
-    })
-    return (
-      <div style={{
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'start',
-      }}>
-        {
-          minimalTabs.map((title, key) => <div key={key} style={{
-            cursor: 'pointer',
-            borderRadius: '10px 10px 0px 0px',
-            backgroundColor:`${
-              focusTab === key ? Colors.AVERTRO_WHITE : Colors.PAGE_BORDER
-            }`,
-            padding: '0.5rem 1.5rem 0.5rem 1.5rem',
-            transition: '500ms',
-          }} onClick={() => setFocusTab(key)}>
-            <Typography variant="h2" sx={{
-              m: '0',
-            }}>
-              {title}
-            </Typography>
-          </div>)
-        }
-      </div>
-    );
-  }
 
   return (
     <div style={{
@@ -62,13 +35,14 @@ const TabSelector = ({
           backgroundColor:`${
             focusTab === key ? Colors.AVERTRO_WHITE : Colors.PAGE_BORDER
           }`,
-          padding: '0.5rem 1.5rem 0.5rem 1.5rem',
+          padding: isMobile ? '0.5rem 0.75rem 0.5rem 0.75rem' : '0.5rem 1.5rem 0.5rem 1.5rem',
           transition: '500ms',
         }} onClick={() => setFocusTab(key)}>
           <Typography variant="h2" sx={{
             m: '0',
+            fontSize: isMobile ? '1rem' : '1.25rem'
           }}>
-            {title}
+            {(isMobile && focusTab !== key) ? acronym(title) : title}
           </Typography>
         </div>)
       }
