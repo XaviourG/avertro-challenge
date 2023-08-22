@@ -86,7 +86,9 @@ const DynamicTextFieldList = ({
               }}>
                 <TextField
                   fullWidth
+                  type='text'
                   value={field}
+                  name={`key measure ${key}`}
                   onChange={(e) => {
                     const arr = fields;
                     arr[key] = e.target.value;
@@ -100,7 +102,7 @@ const DynamicTextFieldList = ({
                   width: '1.5rem',
                 }}>
                   <button style={{
-                    display: `${(field.length > 0) ? 'flex' : 'none'}`,
+                    display: `${(fields.length <= 1 && field.length < 1) ? 'none' : 'flex'}`,
                     border: 'none',
                     background: 'none',
                     padding: '0',
